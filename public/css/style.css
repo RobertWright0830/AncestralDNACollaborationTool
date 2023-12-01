@@ -1,0 +1,27 @@
+@media (min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }   
+}
+
+.company-name {
+    font-size:84px; /* You can adjust the font size as needed */
+    display: block; /*Makes the <h1> elements block-level */
+    margin-bottom: 0px; /* Decreased spacing between "Ancestral DNA" and "Collaborator" */
+}
+
+.slogan {
+    margin-top: 50px; /* Increased spacing between "Collaborator" and the following text */
+}
+
+.text-column {
+    padding-right: 30px;
+}
+
+.nav-item {
+    padding-right: 50px
+}
+
+.news-input {
+
+}

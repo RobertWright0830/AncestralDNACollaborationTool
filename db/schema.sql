@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS dishdash_db;
+
+CREATE DATABASE dishdash_db;
