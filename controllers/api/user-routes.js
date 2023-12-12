@@ -16,8 +16,23 @@ router.post('/', async (req, res) => {
       res.status(200).json(dbUserData);
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    console.error(err); // Log the entire error object for debugging
+
+    // Check if the error is due to a unique constraint violation (duplicate username or email)
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      const errorMessages = err.errors.map((error) => error.message);
+
+      // Check for specific error messages and respond accordingly
+      if (errorMessages.includes('username must be unique')) {
+        res.status(400).json({ error: 'Username already exists' });
+      } else if (errorMessages.includes('email must be unique')) {
+        res.status(400).json({ error: 'Email already exists' });
+      } else {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(500).json(err);
+    }
   }
 });
 
@@ -33,7 +48,7 @@ router.post('/login', async (req, res) => {
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect username or password. Please try again!' });
+        .json({ error: 'Incorrect username or password' });
       return;
     }
 
@@ -42,7 +57,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ error: 'Incorrect username or password' });
       return;
     }
 

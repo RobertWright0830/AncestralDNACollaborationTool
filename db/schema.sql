@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS dishdash_db;
+DROP DATABASE IF EXISTS ancdnacollab_db;
 
-CREATE DATABASE dishdash_db;
+CREATE DATABASE ancdnacollab_db;

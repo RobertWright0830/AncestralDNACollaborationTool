@@ -1,0 +1,90 @@
+<main>
+  {{!-- bootstrap: container sets up max width breakpoint, dark background color, light text color, large padding, text alignment,  --}}
+  <section class='bg-dark text-light p-5 text-sm-start'> 
+      <div class="container">
+      <div class='row mt-5'>
+        <div class='col-lg-4 m-auto rounded-top wrapper'>
+          <h2 class='text-center pt-3'>Sign Up Now</h2>
+          <p class='text-center text-light-muted lead mb-3'>It's free and fast!</p>
+          {{! sign up form fields }}
+          <form class='signup-form' id="form">
+            
+              {{!-- username field --}}
+              <div class='input-group mb-1'>
+                <span class='input-group-text'><i class='fa fa-user'></i></span>
+                <input
+                  type='text'
+                  class='form-control'
+                  id="username-signup"
+                  placeholder='Username'
+                  unique="true"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <small class="success" id="username-message">Error message</small>
+
+              {{!-- email field --}}
+              <div class='input-group mb-1'>
+                <span class='input-group-text'><i class='fa fa-envelope'></i></span>
+                <input 
+                  type='email' 
+                  class='form-control'
+                  id="email-signup"
+                  placeholder='Email'
+                  unique="true"
+                  required
+                />
+              </div>
+              <small class="success" id="email-message">Error message</small>
+
+              {{!-- password field --}}
+              <div class='input-group mb-1'>
+                <span class='input-group-text'><i class='fa fa-lock'></i></span>
+                <input
+                  type='password'
+                  class='form-control'
+                  id="password-signup"
+                  placeholder='Password'
+                  autocomplete="new-password"
+                  required
+                />
+              </div>
+              <small class="success" id="password2-message">Error message</small>
+
+              {{!-- confirm password field --}}
+              <div class='input-group mb-1'>
+                <span class='input-group-text'><i class='fa fa-lock'></i></span>
+                <input
+                  type='password'
+                  class='form-control'
+                  id="confirm-password-signup"
+                  placeholder='Confirm Password'
+                  autocomplete="new-password"
+                  required
+                />
+              </div>
+              <small class="success" id="password2-message">Error message</small>
+
+              {{!-- submit button --}}
+              <div class='d-grid'>
+                <button type='submit' class='btn btn-primary'>Sign Up</button>
+
+                {{!-- additional text --}}
+                <p class='text-center text-light-muted mt-2'>When You Register
+                  by Clicking Sign Up Button, You Agree to our
+                  <a href='#'>Terms and Conditions</a>
+                  and
+                  <a href='#'>Privacy Policy</a>
+                </p>
+                <p class='text-center'>Already Have An Account?
+                  <a href='/login'>Login Here</a></p>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src='./js/signup.js'></script>
