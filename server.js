@@ -24,6 +24,28 @@ const sess = {
 
 app.use(session(sess));
 
+// Set lastActivity on session creation
+app.use((req, res, next) => {
+  req.session.lastActivity = req.session.lastActivity || Date.now();
+  next();
+});
+
+// Logout timer middleware
+app.use((req, res, next) => {
+  const inactivityTimeout = 10 * 60 * 1000;
+  if (
+    req.session.loggedIn &&
+    Date.now() - req.session.lastActivity > inactivityTimeout
+  ) {
+    req.session.destroy(() => {
+      res.redirect('/login');
+    });
+  } else {
+    req.session.lastActivity = Date.now();
+    next();
+  }
+});
+
 const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
