@@ -43,7 +43,15 @@ form.addEventListener('submit', async (e) => {
       });
 
       if (response.ok) {
+
+        await fetch('/api/send-welcome-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ email:emailValue, username:usernameValue}),
+        });
+
         document.location.replace('/');
+
       } else {
         const data = await response.json();
         if (data.error === 'Username already exists') {
